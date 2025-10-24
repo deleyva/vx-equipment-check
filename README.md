@@ -1,161 +1,52 @@
-# 🚀 Scripts CLI
+# VITALINUX - Verificación de Equipos
 
-Una aplicación CLI potente desarrollada con **Typer** que incluye una interfaz gráfica opcional con **tkinter**.
+Aplicación de escritorio para verificar el estado de equipos de trabajo.
 
-## 📋 Características
-
-- ✅ **CLI moderna** con Typer
-- 🖥️ **Interfaz gráfica** opcional con tkinter
-- 🎨 **Comandos interactivos** y fáciles de usar
-- 📦 **Gestión de dependencias** con pyproject.toml
-- 🐍 **Compatible con Python 3.13+**
-
-## 🛠️ Instalación
-
-### Con uv (Recomendado)
-
-1. **Instala uv** si no lo tienes:
-   ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
-
-2. **Clona o descarga** el proyecto
-
-3. **Configura el entorno**:
-   ```bash
-   ./setup.sh
-   ```
-
-### Instalación Manual con uv
+## Ejecutar la aplicación
 
 ```bash
-# Crear entorno virtual
-uv venv
-
-# Instalar dependencias
-uv sync
+uv run python vitalinux_equipment_check.py
 ```
 
-## 🚀 Uso
+## Características
 
-### Línea de Comandos (CLI)
+- ✅ Interfaz moderna con ttkbootstrap
+- ✅ Scroll suave por píxeles
+- ✅ Radiobuttons personalizados blancos inicialmente
+- ✅ Validación inteligente de formularios
+- ✅ Exportación a JSON con metadatos completos
+- ✅ Campos obligatorios: Pantalla y Teclado
+- ✅ Campos opcionales: Ratón, Batería, Otros
 
-#### Ayuda general
+## Dependencias
+
+- Python 3.11+
+- ttkbootstrap
+- tkinter (incluido con Python)
+
+## Crear Ejecutable Linux
+
+### Construcción Automática
 ```bash
-# Con uv (recomendado)
-uv run python main.py --help
+# Crear ejecutable para Linux
+python build_executable.py
 
-# O activando el entorno
-source .venv/bin/activate
-python main.py --help
+# O usando uv directamente
+uv run python build_executable.py
 ```
 
-#### Comando Hello
+### Construcción Manual con PyInstaller
 ```bash
-# Saludo básico
-uv run python main.py hello "Tu Nombre"
-
-# Saludo personalizado
-uv run python main.py hello "Tu Nombre" --greeting "Buenos días"
-uv run python main.py hello "Tu Nombre" -g "¡Hola"
+# Construcción básica
+uv run pyinstaller --onefile --windowed vitalinux_equipment_check.py
 ```
 
-#### Información de la aplicación
+### Crear Paquete DEB
 ```bash
-uv run python main.py info
+./create_deb.sh  # Crea un paquete .deb para instalación
 ```
 
-#### Lanzar interfaz gráfica
-```bash
-uv run python main.py gui
-```
+## Archivos generados
 
-### Interfaz Gráfica (GUI)
-
-La interfaz gráfica proporciona:
-
-- **📝 Formulario interactivo** para el comando hello
-- **🔘 Botones rápidos** para comandos comunes
-- **📺 Área de salida** para ver resultados
-- **📊 Barra de estado** con información en tiempo real
-
-Para lanzar la GUI:
-```bash
-uv run python main.py gui
-```
-
-O ejecutar directamente:
-```bash
-uv run python gui.py
-```
-
-## 📁 Estructura del Proyecto
-
-```
-scripts/
-├── main.py          # Aplicación CLI principal con Typer
-├── gui.py           # Interfaz gráfica con tkinter
-├── pyproject.toml   # Configuración y dependencias
-├── README.md        # Este archivo
-└── .python-version  # Versión de Python
-```
-
-## 🔧 Desarrollo
-
-### Añadir nuevos comandos CLI
-
-1. **Añade una nueva función** en `main.py`:
-   ```python
-   @app.command()
-   def mi_comando(parametro: str):
-       """Descripción del comando"""
-       typer.echo(f"Ejecutando: {parametro}")
-   ```
-
-2. **Úsalo desde CLI**:
-   ```bash
-   python main.py mi-comando "valor"
-   ```
-
-### Extender la GUI
-
-1. **Modifica** `gui.py` para añadir nuevos widgets
-2. **Conecta** los widgets con los comandos CLI usando `subprocess`
-
-## 🎯 Ejemplos de Uso
-
-### Ejemplo 1: Saludo personalizado
-```bash
-uv run python main.py hello "María" --greeting "¡Buenos días"
-# Salida: ¡Buenos días, María! 👋
-```
-
-### Ejemplo 2: Información de la app
-```bash
-uv run python main.py info
-# Salida:
-# 🚀 Scripts CLI v0.1.0
-# Una aplicación CLI desarrollada con Typer
-# Incluye interfaz gráfica opcional con tkinter
-```
-
-### Ejemplo 3: Usar la GUI
-```bash
-uv run python main.py gui
-# Abre la interfaz gráfica
-```
-
-## 🤝 Contribuir
-
-1. **Fork** el proyecto
-2. **Crea** una rama para tu feature
-3. **Haz** commit de tus cambios
-4. **Envía** un pull request
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT.
-
----
-
-**¡Disfruta usando Scripts CLI!** 🎉
+La aplicación genera archivos JSON con el formato:
+`vitalinux_verificacion_equipos_YYYYMMDD_HHMMSS.json`

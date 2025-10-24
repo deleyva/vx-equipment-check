@@ -1,0 +1,78 @@
+Este proyecto de aplicación de escritorio usa:
+
+- https://docs.astral.sh/uv/ para la gestión de dependencias, entornos virtuales y comandos
+- uso tkinter, incluido en python para la GUI
+- uso ttkbootstrap para el look moderno
+
+# Docs
+
+> Astral is a cloud-based platform that provides a comprehensive solution for building, deploying, and managing web applications. They serve developers and teams who need a reliable and scalable platform to host their web projects. Astral's key benefits include easy configuration, seamless deployment, and robust authentication capabilities, allowing users to focus on building great applications without worrying about infrastructure.
+
+## Documentation
+- [Astral Documentation](https://docs.astral.sh/uv/): The main entry point for Astral's documentation, covering various concepts and features of the platform.
+- [Astral Concepts](https://docs.astral.sh/uv/concepts/): Detailed explanations of the core concepts and components that make up the Astral platform.
+- [Building the Backend](https://docs.astral.sh/uv/concepts/build-backend/): Information on how to build and configure the backend of your Astral-powered application.
+- [Caching in Astral](https://docs.astral.sh/uv/concepts/cache/): Guidance on leveraging caching mechanisms to improve the performance of your Astral application.
+- [Configuration Files](https://docs.astral.sh/uv/concepts/configuration-files/): Details on the various configuration files used to set up and customize your Astral project.
+- [Indexes in Astral](https://docs.astral.sh/uv/concepts/indexes/): Information on how Astral's indexing system works and how to manage it.
+- [Preview Environments](https://docs.astral.sh/uv/concepts/preview/): Guidance on setting up and using preview environments for your Astral-powered applications.
+- [Python Versions in Astral](https://docs.astral.sh/uv/concepts/python-versions/): Details on how Astral handles different Python versions and how to manage them in your project.
+- [Resolution in Astral](https://docs.astral.sh/uv/concepts/resolution/): Explanation of Astral's resolution process and how it determines the appropriate resources for your application.
+- [Astral Tools](https://docs.astral.sh/uv/concepts/tools/): Information on the various tools and utilities provided by Astral to enhance the development and deployment experience.
+
+## Authentication
+- [Authentication in Astral](https://docs.astral.sh/uv/concepts/authentication/): Overview of the authentication mechanisms and options available in the Astral platform.
+- [Certificate-based Authentication](https://docs.astral.sh/uv/concepts/authentication/certificates/): Guidance on using certificate-based authentication with Astral.
+- [CLI Authentication](https://docs.astral.sh/uv/concepts/authentication/cli/): Information on authenticating with Astral using the command-line interface.
+- [Git-based Authentication](https://docs.astral.sh/uv/concepts/authentication/git/): Details on using Git-based authentication with Astral.
+- [HTTP Authentication](https://docs.astral.sh/uv/concepts/authentication/http/): Guidance on configuring HTTP-based authentication for your Astral applications.
+- [Third-party Authentication](https://docs.astral.sh/uv/concepts/authentication/third-party/): Information on integrating third-party authentication providers with your Astral-powered applications.
+
+## Projects
+- [Astral Projects](https://docs.astral.sh/uv/concepts/projects/): Overview of the different aspects and components of an Astral project.
+- [Building Astral Projects](https://docs.astral.sh/uv/concepts/projects/build/): Guidance on the build process for Astral-powered applications.
+- [Astral Project Configuration](https://docs.astral.sh/uv/concepts/projects/config/): Details on configuring and customizing your Astral project settings.
+- [Project Dependencies](https://docs.astral.sh/uv/concepts/projects/dependencies/): Information on managing dependencies in your Astral project.
+- [Initializing Astral Projects](https://docs.astral.sh/uv/concepts/projects/init/): Guidance on setting up a new Astral project from scratch.
+- [Astral Project Layout](https://docs.astral.sh/uv/concepts/projects/layout/): Details on the recommended structure and organization of an Astral project.
+- [Running Astral Projects](https://docs.astral.sh/uv/concepts/projects/run/): Information on how to run and execute your Astral-powered applications.
+- [Syncing Astral Projects](https://docs.astral.sh/uv/concepts/projects/sync/): Guidance on synchronizing changes and updates across your Astral project.
+- [Astral Workspaces](https://docs.astral.sh/uv/concepts/projects/workspaces/): Information on using and managing workspaces within your Astral project.
+
+## Getting Started
+- [Getting Started with Astral](https://docs.astral.sh/uv/getting-started/): The main entry point for new users to learn about Astral and how to get started with the platform.
+- [Astral Features](https://docs.astral.sh/uv/getting-started/features/): Overview of the key features and capabilities provided by the Astral platform.
+- [First Steps with Astral](https://docs.astral.sh/uv/getting-started/first-steps/): Guidance on the initial steps to take when starting with Astral, such as installation and project setup.
+- [Getting Help with Astral](https://docs.astral.sh/uv/getting-started/help/): Information on the various support resources and channels available for Astral users.
+- [Installing Astral](https://docs.astral.sh/uv/getting-started/installation/): Instructions on how to install the Astral platform and set it up for use.
+
+# Ttkbootstrap
+
+> ttkbootstrap is a Python library that provides a set of customizable and themable widgets for building modern, responsive user interfaces using the Tkinter GUI toolkit. It aims to make it easier for developers to create visually appealing and consistent desktop applications by providing a set of pre-built widgets that follow the Bootstrap design principles. The library serves developers who need to build desktop applications with a modern, polished look and feel, and who want to leverage the power and flexibility of Tkinter.
+
+## Documentation
+- [ttkbootstrap Documentation](https://ttkbootstrap.readthedocs.io/en/latest/): The main documentation page for the ttkbootstrap library, providing an overview of the library and its features.
+- [About ttkbootstrap](https://ttkbootstrap.readthedocs.io/en/latest/about/): Information about the ttkbootstrap library, including its purpose, features, and development history.
+- [ttkbootstrap License](https://ttkbootstrap.readthedocs.io/en/latest/license/): Details about the license under which the ttkbootstrap library is distributed.
+
+## API Documentation
+- [ttkbootstrap API Documentation](https://ttkbootstrap.readthedocs.io/en/latest/api/): The main page for the ttkbootstrap API documentation, providing an overview of the available modules and classes.
+- [ttkbootstrap Color Utilities](https://ttkbootstrap.readthedocs.io/en/latest/api/colorutils/): Documentation for the color-related utility functions provided by the ttkbootstrap library.
+- [ttkbootstrap Localization](https://ttkbootstrap.readthedocs.io/en/latest/api/localization/): Documentation for the localization features of the ttkbootstrap library, which allow for internationalization of applications.
+- [ttkbootstrap Toast Notifications](https://ttkbootstrap.readthedocs.io/en/latest/api/toast/): Documentation for the toast notification widget provided by the ttkbootstrap library.
+- [ttkbootstrap Tooltips](https://ttkbootstrap.readthedocs.io/en/latest/api/tooltip/): Documentation for the tooltip widget provided by the ttkbootstrap library.
+- [ttkbootstrap Utility Functions](https://ttkbootstrap.readthedocs.io/en/latest/api/utility/): Documentation for the various utility functions provided by the ttkbootstrap library.
+- [ttkbootstrap Validation](https://ttkbootstrap.readthedocs.io/en/latest/api/validation/): Documentation for the validation features of the ttkbootstrap library, which allow for input validation in applications.
+- [ttkbootstrap Color Chooser Dialog](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/colorchooser/): Documentation for the color chooser dialog provided by the ttkbootstrap library.
+- [ttkbootstrap Color Dropper Dialog](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/colordropper/): Documentation for the color dropper dialog provided by the ttkbootstrap library.
+- [ttkbootstrap Date Picker Dialog](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/datepickerdialog/): Documentation for the date picker dialog provided by the ttkbootstrap library.
+- [ttkbootstrap Dialog](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/dialog/): Documentation for the base dialog class provided by the ttkbootstrap library.
+- [ttkbootstrap Font Dialog](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/fontdialog/): Documentation for the font dialog provided by the ttkbootstrap library.
+- [ttkbootstrap Message Box](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/messagebox/): Documentation for the message box dialog provided by the ttkbootstrap library.
+- [ttkbootstrap Message Dialog](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/messagedialog/): Documentation for the message dialog provided by the ttkbootstrap library.
+- [ttkbootstrap Query Box](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/querybox/): Documentation for the query box dialog provided by the ttkbootstrap library.
+- [ttkbootstrap Query Dialog](https://ttkbootstrap.readthedocs.io/en/latest/api/dialogs/querydialog/): Documentation for the query dialog provided by the ttkbootstrap library.
+- [ttkbootstrap Emoji Icons](https://ttkbootstrap.readthedocs.io/en/latest/api/icons/emoji/): Documentation for the emoji icon features provided by the ttkbootstrap library.
+- [ttkbootstrap Icons](https://ttkbootstrap.readthedocs.io/en/latest/api/icons/icon/): Documentation for the icon features provided by the ttkbootstrap library.
+- [ttkbootstrap Scrolled Frame](https://ttkbootstrap.readthedocs.io/en/latest/api/scrolled/scrolledframe/): Documentation for the scrolled frame widget provided by the ttkbootstrap library.
+- [ttkbootstrap Scrolled Text](https://ttkbootstrap.readthedocs.io/en/latest/api/scrolled/scrolledtext/): Documentation for the scrolled text widget provided by the ttkbootstrap library.
