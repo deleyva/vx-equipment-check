@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-10-23T09:30:15.123456",
+  "empresa": "MIGAS",
+  "tipo_verificacion": "equipos_escritorio",
+  "usuario": "usuario_actual",
+  "verificacion_equipos": {
+    "pantalla": {
+      "estado": "correcto",
+      "problema": null
+    },
+    "teclado": {
+      "estado": "defectuoso",
+      "problema": "Algunas teclas no responden correctamente, especialmente la barra espaciadora que requiere presión extra. La tecla Enter está un poco suelta."
+    },
+    "raton": {
+      "estado": "defectuoso",
+      "problema": "El botón izquierdo no funciona bien, hay que hacer doble clic para que responda. La rueda de scroll está atascada y no se mueve suavemente."
+    }
+  },
+  "resumen": {
+    "total_componentes": 3,
+    "componentes_correctos": 1,
+    "componentes_defectuosos": 2,
+    "equipo_operativo": false,
+    "requiere_atencion": true
+  }
+}

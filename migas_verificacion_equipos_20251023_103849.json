@@ -1,0 +1,43 @@
+{
+  "timestamp": "2025-10-23T10:38:49.942415",
+  "empresa": "VITALINUX",
+  "tipo_verificacion": "equipos_escritorio",
+  "usuario": "usuario_actual",
+  "verificacion_equipos": {
+    "pantalla": {
+      "estado": "correcto",
+      "problema": null,
+      "obligatorio": true
+    },
+    "teclado": {
+      "estado": "correcto",
+      "problema": null,
+      "obligatorio": true
+    },
+    "raton": {
+      "estado": "correcto",
+      "problema": null,
+      "obligatorio": false
+    },
+    "bateria": {
+      "estado": "defectuoso",
+      "problema": "Ejemplo: La batería se descarga muy rápido, no mantiene la carga, el indicador no funciona correctamente...",
+      "obligatorio": false
+    },
+    "otros": {
+      "estado": "no_verificado",
+      "problema": null,
+      "obligatorio": false
+    }
+  },
+  "resumen": {
+    "total_componentes": 5,
+    "componentes_obligatorios": 2,
+    "componentes_opcionales": 3,
+    "componentes_verificados": 4,
+    "componentes_correctos": 3,
+    "componentes_defectuosos": 1,
+    "equipo_operativo": false,
+    "requiere_atencion": true
+  }
+}
