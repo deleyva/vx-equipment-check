@@ -1,8 +1,0 @@
-# Configuración específica para uv
-# https://docs.astral.sh/uv/configuration/
-
-# Compilar bytecode para mejor rendimiento
-compile-bytecode = true
-
-# Usar la resolución más alta disponible
-resolution = "highest"

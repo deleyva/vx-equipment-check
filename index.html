@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITALINUX - Verificación de Equipos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <img src="vitalinux-logo.png" alt="VITALINUX Logo" class="logo-icon">
+                    VITALINUX
+                </h1>
+                <h2 class="subtitle">Verificación de Estado de Equipos</h2>
+                <p class="instructions">Por favor, indica el estado de cada componente del equipo de trabajo:</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <form id="equipmentForm" class="equipment-form">
+                
+                <!-- Pantalla -->
+                <div class="component-section">
+                    <div class="component-header">
+                        <h3 class="component-title">🖥️ Pantalla</h3>
+                        <span class="required-badge">Obligatorio</span>
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option correct">
+                            <input type="radio" name="pantalla" value="correcto" required>
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">✅ Funcionamiento Correcto</span>
+                        </label>
+                        <label class="radio-option defective">
+                            <input type="radio" name="pantalla" value="defectuoso" required>
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">❌ Presenta Defectos</span>
+                        </label>
+                    </div>
+                    <div class="description-field" id="pantalla-desc" style="display: none;">
+                        <label class="description-label">📝 Describe detalladamente el problema encontrado:</label>
+                        <textarea 
+                            class="description-textarea" 
+                            placeholder="Ejemplo: La pantalla parpadea constantemente, hay líneas verticales en el lado derecho..."
+                            rows="4"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Teclado -->
+                <div class="component-section">
+                    <div class="component-header">
+                        <h3 class="component-title">⌨️ Teclado</h3>
+                        <span class="required-badge">Obligatorio</span>
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option correct">
+                            <input type="radio" name="teclado" value="correcto" required>
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">✅ Funcionamiento Correcto</span>
+                        </label>
+                        <label class="radio-option defective">
+                            <input type="radio" name="teclado" value="defectuoso" required>
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">❌ Presenta Defectos</span>
+                        </label>
+                    </div>
+                    <div class="description-field" id="teclado-desc" style="display: none;">
+                        <label class="description-label">📝 Describe detalladamente el problema encontrado:</label>
+                        <textarea 
+                            class="description-textarea" 
+                            placeholder="Ejemplo: Algunas teclas no responden, la tecla espacio está atascada, falta la tecla Enter..."
+                            rows="4"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Ratón -->
+                <div class="component-section">
+                    <div class="component-header">
+                        <h3 class="component-title">🖱️ Ratón</h3>
+                        <span class="optional-badge">Opcional</span>
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option correct">
+                            <input type="radio" name="raton" value="correcto">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">✅ Funcionamiento Correcto</span>
+                        </label>
+                        <label class="radio-option defective">
+                            <input type="radio" name="raton" value="defectuoso">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">❌ Presenta Defectos</span>
+                        </label>
+                    </div>
+                    <div class="description-field" id="raton-desc" style="display: none;">
+                        <label class="description-label">📝 Describe detalladamente el problema encontrado:</label>
+                        <textarea 
+                            class="description-textarea" 
+                            placeholder="Ejemplo: El botón izquierdo no funciona bien, la rueda de scroll está bloqueada..."
+                            rows="4"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Batería -->
+                <div class="component-section">
+                    <div class="component-header">
+                        <h3 class="component-title">🔋 Batería</h3>
+                        <span class="optional-badge">Opcional</span>
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option correct">
+                            <input type="radio" name="bateria" value="correcto">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">✅ Funcionamiento Correcto</span>
+                        </label>
+                        <label class="radio-option defective">
+                            <input type="radio" name="bateria" value="defectuoso">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">❌ Presenta Defectos</span>
+                        </label>
+                    </div>
+                    <div class="description-field" id="bateria-desc" style="display: none;">
+                        <label class="description-label">📝 Describe detalladamente el problema encontrado:</label>
+                        <textarea 
+                            class="description-textarea" 
+                            placeholder="Ejemplo: La batería se descarga muy rápido, no mantiene la carga, el indicador no funciona..."
+                            rows="4"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Otros -->
+                <div class="component-section">
+                    <div class="component-header">
+                        <h3 class="component-title">⚙️ Otros</h3>
+                        <span class="optional-badge">Opcional</span>
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option correct">
+                            <input type="radio" name="otros" value="correcto">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">✅ Funcionamiento Correcto</span>
+                        </label>
+                        <label class="radio-option defective">
+                            <input type="radio" name="otros" value="defectuoso">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">❌ Presenta Defectos</span>
+                        </label>
+                    </div>
+                    <div class="description-field" id="otros-desc" style="display: none;">
+                        <label class="description-label">📝 Describe detalladamente el problema encontrado:</label>
+                        <textarea 
+                            class="description-textarea" 
+                            placeholder="Ejemplo: Problemas con puertos USB, ventiladores hacen ruido, carcasa dañada, cables sueltos..."
+                            rows="4"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button type="button" id="clearBtn" class="btn btn-secondary">
+                        🗑️ Limpiar Formulario
+                    </button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary">
+                        📤 Enviar Verificación
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✅ VERIFICACIÓN COMPLETADA</h2>
+            </div>
+            <div class="modal-body">
+                <p id="resultFileName" class="file-info"></p>
+                <div id="resultStatus" class="status-info"></div>
+                <div id="resultSummary" class="summary-info"></div>
+                
+                <div class="json-section">
+                    <h3>📄 Datos del reporte (JSON):</h3>
+                    <pre id="jsonOutput" class="json-output"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="newVerificationBtn" class="btn btn-secondary">🔄 Nueva Verificación</button>
+                <button id="closeModalBtn" class="btn btn-primary">🔙 Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

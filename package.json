@@ -1,0 +1,22 @@
+{
+  "name": "vitalinux-equipment-check",
+  "version": "1.0.0",
+  "description": "Aplicación de verificación de equipos VITALINUX con Tauri",
+  "main": "index.js",
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "build-release": "tauri build --release",
+    "build-deb": "tauri build --target x86_64-unknown-linux-gnu",
+    "preview": "vite preview",
+    "clean": "rm -rf dist src-tauri/target node_modules/.cache"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.5.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.0",
+    "vite": "^5.0.0"
+  }
+}
