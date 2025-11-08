@@ -1,5 +1,5 @@
 # Dockerfile para construir VITALINUX Equipment Check en Linux
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 # Evitar prompts interactivos durante la instalación
 ENV DEBIAN_FRONTEND=noninteractive
@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libssl-dev \
     libgtk-3-dev \
-    libwebkit2gtk-4.0-dev \
+    libwebkit2gtk-4.1-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev \
     pkg-config \
