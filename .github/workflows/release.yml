@@ -24,48 +24,35 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const version = process.env.PACKAGE_VERSION;
+            const releaseBody = [
+              `🐧 VITALINUX Equipment Check v${version}`,
+              '',
+              'Aplicación de verificación de equipos de escritorio para VITALINUX y distribuciones Linux compatibles.',
+              '',
+              '## 📦 Paquetes Linux Disponibles',
+              '📦 .deb: Para Ubuntu/VitaLinux/Debian - Instalación con dependencias automáticas',
+              '',
+              '## 🔧 Instalación en VitaLinux/Ubuntu',
+              '```bash',
+              '# Método 1: Paquete .deb (Recomendado)',
+              `sudo dpkg -i vitalinux-equipment-check_${version}_amd64.deb`,
+              'sudo apt install -f  # Instalar dependencias si es necesario',
+              '```',
+              '',
+              '## 🔧 Dependencias del Sistema',
+              '```bash',
+              '# Ubuntu/VitaLinux/Debian',
+              'sudo apt install libwebkit2gtk-4.0-37 libgtk-3-0',
+              '```'
+            ].join('\n');
+
             const { data } = await github.rest.repos.createRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag_name: `v${process.env.PACKAGE_VERSION}`,
-              name: `VITALINUX Equipment Check v${process.env.PACKAGE_VERSION}`,
-              body: `## 🐧 VITALINUX Equipment Check v${process.env.PACKAGE_VERSION}
-              
-              Aplicación de verificación de equipos de escritorio para **VITALINUX** y distribuciones Linux compatibles.
-              
-              ### 📦 Paquetes Linux Disponibles
-              - **📦 .deb**: Para Ubuntu/VitaLinux/Debian - Instalación con dependencias automáticas
-              - **📦 .rpm**: Para Fedora/CentOS/RHEL/openSUSE  
-              - **📱 .AppImage**: Portable - Ejecutar directamente sin instalación
-              
-              ### 🔧 Instalación en VitaLinux/Ubuntu
-              \`\`\`bash
-              # Método 1: Paquete .deb (Recomendado)
-              sudo dpkg -i vitalinux-equipment-check_${process.env.PACKAGE_VERSION}_amd64.deb
-              sudo apt install -f  # Instalar dependencias si es necesario
-              \`\`\`
-              
-              ### 📱 Uso Portable con AppImage
-              \`\`\`bash
-              # Descargar, hacer ejecutable y usar
-              chmod +x vitalinux-equipment-check_${process.env.PACKAGE_VERSION}_amd64.AppImage
-              ./vitalinux-equipment-check_${process.env.PACKAGE_VERSION}_amd64.AppImage
-              \`\`\`
-              
-              ### 🔧 Dependencias del Sistema
-              \`\`\`bash
-              # Ubuntu/VitaLinux/Debian
-              sudo apt install libwebkit2gtk-4.0-37 libgtk-3-0
-              
-              # Fedora/CentOS/RHEL
-              sudo dnf install webkit2gtk3 gtk3
-              \`\`\`
-              
-              ---
-              **📋 Instrucciones para completar el release:**
-              1. Construir localmente: \`./docker-build.sh\`
-              2. Subir archivos desde \`./docker-output/\` a este release
-              3. Publicar el release cuando esté listo`,
+              tag_name: `v${version}`,
+              name: `VITALINUX Equipment Check v${version}`,
+              body: releaseBody,
               draft: true,
               prerelease: false
             })
