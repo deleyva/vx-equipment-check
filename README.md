@@ -134,6 +134,11 @@ chmod +x vitalinux-equipment-check_1.0.0_amd64.AppImage
 ./build-linux.sh  # En una máquina Linux
 ```
 
+**Método 4: Build con Docker (Consistente)**
+```bash
+./docker-build.sh  # Funciona en cualquier sistema con Docker
+```
+
 ### Dependencias del Sistema
 
 **Ubuntu/VitaLinux:**
@@ -243,6 +248,42 @@ Para nueva versión:
 2. Distribuir via USB/descarga directa
 3. Ejecutar inmediatamente
 
+## 🤖 **CI/CD y Automatización**
+
+### GitHub Actions para Releases Automáticos
+
+El proyecto incluye GitHub Actions que automáticamente:
+
+1. **Detecta nuevos tags** (formato `v1.0.0`)
+2. **Construye para Linux** (.deb, .rpm, .AppImage)
+3. **Crea release en GitHub** con todos los paquetes Linux
+4. **Genera notas de release** automáticas específicas para VitaLinux
+
+**Para crear un release:**
+```bash
+# Actualizar versión en package.json
+git tag v1.0.1
+git push origin v1.0.1
+# GitHub Actions se encarga del resto automáticamente
+```
+
+### Build con Docker (Entorno Consistente)
+
+Para garantizar builds reproducibles:
+
+```bash
+# Construir usando Docker (funciona en cualquier sistema)
+./docker-build.sh
+
+# Los archivos aparecerán en ./docker-output/
+```
+
+**Ventajas del build con Docker:**
+- ✅ **Entorno consistente** - Mismo resultado en cualquier máquina
+- ✅ **Sin dependencias locales** - Todo incluido en el contenedor
+- ✅ **Reproducible** - Mismo Ubuntu 20.04 + herramientas exactas
+- ✅ **Limpio** - No afecta tu sistema local
+
 ## ✨ Ventajas de esta Implementación
 
 - 🚀 **3x más rápida** que soluciones tradicionales
@@ -251,3 +292,5 @@ Para nueva versión:
 - 📦 **Distribución automática** con instaladores nativos
 - 🛡️ **Más segura** con permisos granulares
 - 💾 **Tamaño optimizado** (~15MB vs ~50MB de alternativas)
+- 🤖 **CI/CD completo** con GitHub Actions
+- 🐳 **Builds reproducibles** con Docker
