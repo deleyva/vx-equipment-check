@@ -8,12 +8,12 @@ set -e
 echo "🐳 Construyendo VITALINUX Equipment Check con Docker..."
 
 # Construir la imagen Docker
-echo "📦 Creando imagen Docker..."
-docker build -t vitalinux-equipment-check-builder .
+echo "🐳 Construyendo imagen Docker para AMD64..."
+docker build --platform linux/amd64 -t vitalinux-equipment-check-builder .
 
 # Crear contenedor y extraer archivos
 echo "🏗️ Ejecutando build en contenedor..."
-docker run --name vx-build-temp vitalinux-equipment-check-builder
+docker run --platform linux/amd64 --name vx-build-temp vitalinux-equipment-check-builder
 
 # Crear directorio de salida
 mkdir -p ./docker-output
