@@ -33,8 +33,15 @@ WORKDIR /app
 
 # Copiar archivos de configuración
 COPY package*.json ./
-COPY src-tauri/ ./src-tauri/
 COPY vite.config.js ./
+
+# Copiar src-tauri excluyendo target/
+COPY src-tauri/Cargo.toml ./src-tauri/
+COPY src-tauri/Cargo.lock ./src-tauri/
+COPY src-tauri/tauri.conf.json ./src-tauri/
+COPY src-tauri/build.rs ./src-tauri/
+COPY src-tauri/src/ ./src-tauri/src/
+COPY src-tauri/icons/ ./src-tauri/icons/
 
 # Instalar dependencias de Node.js
 RUN npm ci
