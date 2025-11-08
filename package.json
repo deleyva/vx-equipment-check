@@ -1,6 +1,6 @@
 {
   "name": "vitalinux-equipment-check",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Aplicación de verificación de equipos VITALINUX con Tauri",
   "main": "index.js",
   "scripts": {

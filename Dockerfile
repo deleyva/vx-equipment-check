@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     libwebkit2gtk-4.1-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev \
-    libsoup-3.0-dev \
+    libsoup2.4-dev \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
