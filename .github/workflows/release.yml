@@ -1,4 +1,4 @@
-name: 'Release VITALINUX Equipment Check'
+name: 'Create Release Draft'
 
 on:
   push:
@@ -11,8 +11,6 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    outputs:
-      release_id: ${{ steps.create-release.outputs.result }}
 
     steps:
       - uses: actions/checkout@v4
@@ -22,8 +20,7 @@ jobs:
           node-version: 18
       - name: get version
         run: echo "PACKAGE_VERSION=$(node -pe "require('./package.json').version")" >> $GITHUB_ENV
-      - name: create release
-        id: create-release
+      - name: create release draft
         uses: actions/github-script@v6
         with:
           script: |
@@ -62,66 +59,14 @@ jobs:
               
               # Fedora/CentOS/RHEL
               sudo dnf install webkit2gtk3 gtk3
-              \`\`\``,
+              \`\`\`
+              
+              ---
+              **📋 Instrucciones para completar el release:**
+              1. Construir localmente: \`./docker-build.sh\`
+              2. Subir archivos desde \`./docker-output/\` a este release
+              3. Publicar el release cuando esté listo`,
               draft: true,
               prerelease: false
             })
-            return data.id
-
-  build-tauri:
-    needs: create-release
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: install Rust stable
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: install Linux dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev libsoup2.4-dev
-
-      - name: install frontend dependencies
-        run: npm ci
-
-      - name: copy assets to dist
-        run: |
-          mkdir -p dist
-          cp index.html styles.css script.js vitalinux-logo.png dist/
-
-      - uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          releaseId: ${{ needs.create-release.outputs.release_id }}
-
-  publish-release:
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    needs: [create-release, build-tauri]
-
-    steps:
-      - name: publish release
-        id: publish-release
-        uses: actions/github-script@v6
-        env:
-          release_id: ${{ needs.create-release.outputs.release_id }}
-        with:
-          script: |
-            github.rest.repos.updateRelease({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              release_id: process.env.release_id,
-              draft: false,
-              prerelease: false
-            })
+            console.log('Release draft created:', data.html_url)
