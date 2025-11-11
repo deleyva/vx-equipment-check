@@ -294,3 +294,11 @@ Para garantizar builds reproducibles:
 - 💾 **Tamaño optimizado** (~15MB vs ~50MB de alternativas)
 - 🤖 **CI/CD completo** con GitHub Actions
 - 🐳 **Builds reproducibles** con Docker
+
+## Obtener usuario
+
+migrasfree-cid
+
+## Obtener CID
+
+vx-usuario-grafico
