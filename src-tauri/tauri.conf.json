@@ -4,7 +4,8 @@
     "beforeBuildCommand": "cp index.html styles.css script.js vitalinux-logo.png dist/",
     "beforeDevCommand": "cp index.html styles.css script.js vitalinux-logo.png dist/",
     "devPath": "../dist",
-    "distDir": "../dist"
+    "distDir": "../dist",
+    "withGlobalTauri": true
   },
   "package": {
     "productName": "VITALINUX Equipment Check",
@@ -37,11 +38,7 @@
         "depends": ["libwebkit2gtk-4.0-37", "libgtk-3-0"]
       },
       "externalBin": [],
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png"
-      ],
+      "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png"],
       "identifier": "com.vitalinux.equipment-check",
       "longDescription": "Aplicación de verificación de equipos de escritorio para VITALINUX",
       "macOS": {
@@ -68,7 +65,8 @@
     },
     "windows": [
       {
-        "fullscreen": false,
+        "fullscreen": true,
+        "decorations": false,
         "height": 900,
         "resizable": true,
         "title": "VITALINUX - Verificación de Equipos",

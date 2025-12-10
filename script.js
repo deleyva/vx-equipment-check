@@ -165,9 +165,37 @@ function handleSubmit(event) {
         return;
     }
     
-    // Generar y guardar reporte
-    generateAndSaveReport();
+    // Generar y enviar reporte al backend
+    submitFormToBackend();
 }
+
+async function submitFormToBackend() {
+    try {
+        console.log('📤 Enviando datos al sistema...');
+        
+        const report = generateJsonReport();
+        
+        if (tauriAPI && tauriAPI.invoke) {
+            // Invocar comando Rust que:
+            // 1. Ejecuta comandos de sistema (cid, usuario)
+            // 2. Genera curl en stdout
+            // 3. Cierra la aplicación
+            await tauriAPI.invoke('submit_form', { data: report });
+        } else {
+            // Fallback para desarrollo en navegador
+            console.warn('⚠️ Tauri API no disponible. JSON generado:');
+            console.log(JSON.stringify(report, null, 2));
+            showNotification('⚠️ Modo Navegador', 'Se ha generado el JSON en la consola (F12). En producción la app se cerraría.', 'info');
+        }
+        
+    } catch (error) {
+        console.error('❌ Error al enviar:', error);
+        showNotification('❌ Error', `Error al procesar envío:\n${error.message}`, 'error');
+    }
+}
+
+// Función obsoleta por ahora
+// async function generateAndSaveReport() { ... }
 
 function updateDescriptions() {
     const components = ['pantalla', 'teclado', 'raton', 'bateria', 'otros'];
@@ -285,7 +313,6 @@ function generateJsonReport() {
         timestamp: now.toISOString(),
         empresa: "VITALINUX",
         tipo_verificacion: "equipos_escritorio",
-        usuario: "usuario_actual",
         verificacion_equipos: {
             pantalla: {
                 estado: formData.pantalla,
