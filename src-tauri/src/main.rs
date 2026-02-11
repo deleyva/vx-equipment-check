@@ -51,16 +51,22 @@ fn submit_form(app_handle: tauri::AppHandle, mut data: serde_json::Value) {
               -d '{}'", api_url, json_string);
     } else {
         // Production mode: send real HTTP POST
+        println!("[DEBUG] Sending to: {}", api_url);
+        println!("[DEBUG] Payload: {}", serde_json::to_string_pretty(&data).unwrap_or("{}".to_string()));
+
         let client = reqwest::blocking::Client::new();
         match client.post(&api_url)
             .json(&data)
             .send()
         {
             Ok(response) => {
-                if response.status().is_success() {
+                let status = response.status();
+                if status.is_success() {
                     println!("[OK] Report sent successfully to {}", api_url);
                 } else {
-                    eprintln!("[ERROR] Server responded with status: {}", response.status());
+                    let body = response.text().unwrap_or_else(|_| "No body".to_string());
+                    eprintln!("[ERROR] Server responded with status: {}", status);
+                    eprintln!("[ERROR] Response body: {}", body);
                 }
             }
             Err(e) => {
@@ -74,6 +80,10 @@ fn submit_form(app_handle: tauri::AppHandle, mut data: serde_json::Value) {
 }
 
 fn main() {
+    // DEBUG: Print API URL at startup
+    let api_url = get_api_url();
+    println!("[DEBUG] VX_API_URL = {}", api_url);
+
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![submit_form])
         .setup(|app| {

@@ -311,8 +311,6 @@ function generateJsonReport() {
     
     const report = {
         timestamp: now.toISOString(),
-        empresa: "VITALINUX",
-        tipo_verificacion: "equipos_escritorio",
         verificacion_equipos: {
             pantalla: {
                 estado: formData.pantalla,
