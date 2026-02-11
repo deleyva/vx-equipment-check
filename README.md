@@ -295,10 +295,68 @@ Para garantizar builds reproducibles:
 - 🤖 **CI/CD completo** con GitHub Actions
 - 🐳 **Builds reproducibles** con Docker
 
-## Obtener usuario
+## ⚙️ Configuración de la API
 
+### Variable de Entorno VX_API_URL
+
+La aplicación puede configurarse para enviar los reportes a diferentes endpoints mediante la variable de entorno `VX_API_URL`.
+
+**Configuración por defecto:**
+```
+http://172.16.0.1.249:3001/v1/report
+```
+
+**Para cambiar el endpoint:**
+
+```bash
+# Linux/macOS
+export VX_API_URL="https://api.vitalinux.com/v1/report"
+
+# Windows (PowerShell)
+$env:VX_API_URL="https://api.vitalinux.com/v1/report"
+
+# Windows (CMD)
+set VX_API_URL=https://api.vitalinux.com/v1/report
+```
+
+**Ejecutar la aplicación con URL personalizada:**
+
+```bash
+# Desarrollo
+VX_API_URL="https://api.vitalinux.com/v1/report" npm run dev
+
+# Producción (ejecutable compilado)
+VX_API_URL="https://api.vitalinux.com/v1/report" ./vitalinux-equipment-check
+```
+
+### Modo Dry-Run (Testing)
+
+Para probar la aplicación sin enviar datos reales al servidor:
+
+```bash
+# El modo dry-run imprime el comando curl que se ejecutaría sin enviarlo
+./vitalinux-equipment-check --dry-run
+
+# Combinando con URL personalizada
+VX_API_URL="https://api.vitalinux.com/v1/report" ./vitalinux-equipment-check --dry-run
+```
+
+En modo `--dry-run`, la aplicación:
+- ✅ NO envía datos al servidor
+- ✅ Muestra el comando `curl` equivalente en la consola
+- ✅ Permite verificar el payload JSON antes de enviarlo
+- ✅ Útil para desarrollo y debugging
+
+## 🔍 Comandos del Sistema
+
+### Obtener usuario
+
+```bash
 migrasfree-cid
+```
 
-## Obtener CID
+### Obtener CID
 
+```bash
 vx-usuario-grafico
+```
