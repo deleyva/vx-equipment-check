@@ -42,6 +42,7 @@ body {
     margin-bottom: 30px;
     box-shadow: var(--shadow);
     text-align: center;
+    position: relative;
 }
 
 .title {
@@ -74,6 +75,47 @@ body {
     color: var(--medium-gray);
     max-width: 600px;
     margin: 0 auto;
+}
+
+/* GitHub attribution badge (top-right, always visible) */
+.github-badge {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    color: #24292e;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    text-decoration: none;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none; /* app bloqueada: no interactivo */
+}
+
+.github-badge-icon {
+    flex-shrink: 0;
+}
+
+.github-badge-text {
+    white-space: nowrap;
+}
+
+/* En pantallas muy estrechas, ocultar el texto y dejar solo el icono */
+@media (max-width: 520px) {
+    .github-badge-text {
+        display: none;
+    }
+    .github-badge {
+        padding: 6px;
+        border-radius: 50%;
+    }
 }
 
 /* Main Content */
