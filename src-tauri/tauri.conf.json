@@ -35,7 +35,10 @@
       "category": "DeveloperTool",
       "copyright": "",
       "deb": {
-        "depends": ["libwebkit2gtk-4.0-37", "libgtk-3-0"]
+        "depends": ["libwebkit2gtk-4.0-37", "libgtk-3-0"],
+        "files": {
+          "autostart/vx-pc-check-form.desktop": "/etc/xdg/autostart/"
+        }
       },
       "externalBin": [],
       "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png"],
