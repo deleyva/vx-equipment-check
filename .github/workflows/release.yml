@@ -55,10 +55,14 @@ jobs:
           ORIG_DEB=$(find src-tauri/target/release/bundle/deb -name "*.deb" | head -1)
           NEW_NAME="vx-dga-pc-check-form_${{ env.PACKAGE_VERSION }}_amd64.deb"
           NEW_PATH="src-tauri/target/release/bundle/deb/$NEW_NAME"
-          mv "$ORIG_DEB" "$NEW_PATH"
+          if [ "$ORIG_DEB" != "$NEW_PATH" ]; then
+            mv "$ORIG_DEB" "$NEW_PATH"
+            echo "Renamed: $(basename $ORIG_DEB) -> $NEW_NAME"
+          else
+            echo "Already named correctly: $NEW_NAME"
+          fi
           echo "DEB_PATH=$NEW_PATH" >> $GITHUB_ENV
           echo "DEB_NAME=$NEW_NAME" >> $GITHUB_ENV
-          echo "Renamed: $(basename $ORIG_DEB) -> $NEW_NAME"
 
       - name: Create Release and upload .deb
         uses: softprops/action-gh-release@v2
