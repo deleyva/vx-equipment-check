@@ -1,4 +1,4 @@
-name: 'Create Release Draft'
+name: 'Build and Release .deb'
 
 on:
   push:
@@ -7,53 +7,76 @@ on:
   workflow_dispatch:
 
 jobs:
-  create-release:
+  build-and-release:
     permissions:
       contents: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v4
-      - name: setup node
+
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: get version
-        run: echo "PACKAGE_VERSION=$(node -pe "require('./package.json').version")" >> $GITHUB_ENV
-      - name: create release draft
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const version = process.env.PACKAGE_VERSION;
-            const releaseBody = [
-              `🐧 VITALINUX Equipment Check v${version}`,
-              '',
-              'Aplicación de verificación de equipos de escritorio para VITALINUX y distribuciones Linux compatibles.',
-              '',
-              '## 📦 Paquetes Linux Disponibles',
-              '📦 .deb: Para Ubuntu/VitaLinux/Debian - Instalación con dependencias automáticas',
-              '',
-              '## 🔧 Instalación en VitaLinux/Ubuntu',
-              '```bash',
-              '# Método 1: Paquete .deb (Recomendado)',
-              `sudo dpkg -i vitalinux-equipment-check_${version}_amd64.deb`,
-              'sudo apt install -f  # Instalar dependencias si es necesario',
-              '```',
-              '',
-              '## 🔧 Dependencias del Sistema',
-              '```bash',
-              '# Ubuntu/VitaLinux/Debian',
-              'sudo apt install libwebkit2gtk-4.0-37 libgtk-3-0',
-              '```'
-            ].join('\n');
 
-            const { data } = await github.rest.repos.createRelease({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              tag_name: `v${version}`,
-              name: `VITALINUX Equipment Check v${version}`,
-              body: releaseBody,
-              draft: true,
-              prerelease: false
-            })
-            console.log('Release draft created:', data.html_url)
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.0-dev \
+            libgtk-3-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev \
+            patchelf
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      - name: Build Tauri (.deb only)
+        run: npx tauri build --bundles deb
+
+      - name: Get version
+        run: echo "PACKAGE_VERSION=$(node -pe "require('./package.json').version")" >> $GITHUB_ENV
+
+      - name: Find .deb file
+        run: |
+          DEB_PATH=$(find src-tauri/target/release/bundle/deb -name "*.deb" | head -1)
+          echo "DEB_PATH=$DEB_PATH" >> $GITHUB_ENV
+          echo "DEB_NAME=$(basename $DEB_PATH)" >> $GITHUB_ENV
+          echo "Found: $DEB_PATH"
+
+      - name: Create Release and upload .deb
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "VITALINUX Equipment Check v${{ env.PACKAGE_VERSION }}"
+          body: |
+            🐧 VITALINUX Equipment Check v${{ env.PACKAGE_VERSION }}
+
+            Aplicación de verificación de equipos de escritorio para VITALINUX y distribuciones Linux compatibles.
+
+            ## 📦 Instalación
+
+            ```bash
+            sudo dpkg -i ${{ env.DEB_NAME }}
+            sudo apt install -f  # Instalar dependencias si es necesario
+            ```
+
+            ## 🔧 Dependencias del Sistema
+
+            ```bash
+            sudo apt install libwebkit2gtk-4.0-37 libgtk-3-0
+            ```
+          draft: false
+          files: ${{ env.DEB_PATH }}
