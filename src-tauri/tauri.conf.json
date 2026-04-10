@@ -8,7 +8,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "Comprobación de PC Vitalinux",
+    "productName": "vx-pc-check-form",
     "version": "1.0.10"
   },
   "tauri": {
