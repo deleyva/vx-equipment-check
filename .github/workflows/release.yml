@@ -50,12 +50,15 @@ jobs:
       - name: Get version
         run: echo "PACKAGE_VERSION=$(node -pe "require('./package.json').version")" >> $GITHUB_ENV
 
-      - name: Find .deb file
+      - name: Find and rename .deb file
         run: |
-          DEB_PATH=$(find src-tauri/target/release/bundle/deb -name "*.deb" | head -1)
-          echo "DEB_PATH=$DEB_PATH" >> $GITHUB_ENV
-          echo "DEB_NAME=$(basename $DEB_PATH)" >> $GITHUB_ENV
-          echo "Found: $DEB_PATH"
+          ORIG_DEB=$(find src-tauri/target/release/bundle/deb -name "*.deb" | head -1)
+          NEW_NAME="vx-pc-check-form_${{ env.PACKAGE_VERSION }}_amd64.deb"
+          NEW_PATH="src-tauri/target/release/bundle/deb/$NEW_NAME"
+          mv "$ORIG_DEB" "$NEW_PATH"
+          echo "DEB_PATH=$NEW_PATH" >> $GITHUB_ENV
+          echo "DEB_NAME=$NEW_NAME" >> $GITHUB_ENV
+          echo "Renamed: $(basename $ORIG_DEB) -> $NEW_NAME"
 
       - name: Create Release and upload .deb
         uses: softprops/action-gh-release@v2

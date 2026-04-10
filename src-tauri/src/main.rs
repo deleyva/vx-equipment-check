@@ -20,10 +20,23 @@ fn get_api_url() -> String {
 #[tauri::command]
 fn submit_form(app_handle: tauri::AppHandle, mut data: serde_json::Value) {
     // 1. Obtener migrasfree-cid
-    // Intentamos ejecutar el comando. Si falla (ej. en Mac), usamos un valor mock.
     let cid = match Command::new("migrasfree-cid").output() {
-        Ok(output) => String::from_utf8_lossy(&output.stdout).trim().to_string(),
-        Err(_) => "MOCK_CID_12345".to_string(),
+        Ok(output) => {
+            let stdout = String::from_utf8_lossy(&output.stdout).trim().to_string();
+            let stderr = String::from_utf8_lossy(&output.stderr).trim().to_string();
+            println!("[DEBUG] migrasfree-cid exit={} stdout='{}' stderr='{}'", output.status, stdout, stderr);
+            if !stdout.is_empty() {
+                stdout
+            } else if !stderr.is_empty() {
+                stderr
+            } else {
+                String::new()
+            }
+        }
+        Err(e) => {
+            eprintln!("[ERROR] migrasfree-cid not found: {}", e);
+            String::new()
+        }
     };
 
     // 2. Obtener vx-usuario-grafico

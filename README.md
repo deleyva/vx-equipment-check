@@ -88,15 +88,34 @@ npm run build
 
 ### Variable de Entorno VX_API_URL
 
+Para un usuario concreto:
+
 ```bash
-# Cambiar endpoint (por defecto: http://172.16.0.1.249:3001/v1/report)
-VX_API_URL="https://api.vitalinux.com/v1/report" ./vx-pc-check-form
+VX_API_URL="http://192.168.1.105:3001/v1/report" vx-pc-check-form
+```
+
+Para configurarlo de forma permanente para **todos los usuarios del sistema**:
+
+```bash
+# Crear fichero de entorno global
+sudo tee /etc/environment.d/vx-pc-check-form.conf << 'EOF'
+VX_API_URL="http://192.168.1.105:3001/v1/report"
+EOF
+```
+
+> Los usuarios necesitan cerrar sesión y volver a entrar para que surta efecto.
+
+Alternativa con `/etc/environment` (compatible con sistemas sin `environment.d`):
+
+```bash
+# Añadir al final de /etc/environment
+echo 'VX_API_URL="http://192.168.1.105:3001/v1/report"' | sudo tee -a /etc/environment
 ```
 
 ### Modo Dry-Run (Testing)
 
 ```bash
-./vx-pc-check-form --dry-run
+vx-pc-check-form --dry-run
 ```
 
 ## Comandos del Sistema

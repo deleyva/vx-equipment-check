@@ -36,6 +36,7 @@
       "copyright": "",
       "deb": {
         "depends": ["libwebkit2gtk-4.0-37", "libgtk-3-0"],
+        "desktopTemplate": "desktop-template.desktop",
         "files": {
           "autostart/vx-pc-check-form.desktop": "/etc/xdg/autostart/"
         }
