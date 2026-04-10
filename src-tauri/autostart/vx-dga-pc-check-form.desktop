@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=Comprobación de PC Vitalinux
-Exec=vx-pc-check-form
-Icon=vx-pc-check-form
+Exec=vx-dga-pc-check-form
+Icon=vx-dga-pc-check-form
 Terminal=false
 X-GNOME-Autostart-enabled=true
 Comment=Verificación de equipos al inicio de sesión

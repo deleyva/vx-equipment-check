@@ -1,5 +1,5 @@
 [package]
-name = "vx-pc-check-form"
+name = "vx-dga-pc-check-form"
 version = "1.0.10"
 description = "Aplicación de verificación de equipos VITALINUX"
 authors = ["VITALINUX Team"]

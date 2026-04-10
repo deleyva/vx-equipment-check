@@ -9,11 +9,11 @@ echo "🐳 Construyendo Comprobación de PC Vitalinux con Docker..."
 
 # Construir la imagen Docker
 echo "🐳 Construyendo imagen Docker para AMD64..."
-docker build --platform linux/amd64 -t vx-pc-check-form-builder .
+docker build --platform linux/amd64 -t vx-dga-pc-check-form-builder .
 
 # Crear contenedor y extraer archivos
 echo "🏗️ Ejecutando build en contenedor..."
-docker run --platform linux/amd64 --name vx-build-temp vx-pc-check-form-builder
+docker run --platform linux/amd64 --name vx-build-temp vx-dga-pc-check-form-builder
 
 # Crear directorio de salida
 mkdir -p ./docker-output

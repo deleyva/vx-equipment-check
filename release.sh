@@ -86,7 +86,7 @@ echo -e "${GREEN}✅ Tag v${NEW_VERSION} creado y pusheado${NC}"
 # Paso 4: Esperar a que GitHub Actions cree el draft
 echo ""
 echo -e "${BLUE}⏳ Paso 4: GitHub Actions creará el draft release...${NC}"
-echo "🔗 Ve a: https://github.com/deleyva/vx-equipment-check/releases"
+echo "🔗 Ve a: https://github.com/deleyva/vx-dga-pc-check-form/releases"
 echo ""
 
 # Paso 5: Mostrar archivos para subir

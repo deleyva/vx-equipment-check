@@ -6,7 +6,7 @@
 **Tipo:** Aplicación de escritorio para verificación de equipos  
 **Tecnología:** Tauri (Rust + HTML/CSS/JavaScript)  
 **Usuario:** deleyva (VITALINUX Team)  
-**Repositorio:** vx-equipment-check  
+**Repositorio:** vx-dga-pc-check-form  
 
 ## 🎯 Propósito de la Aplicación
 

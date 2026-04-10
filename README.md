@@ -20,10 +20,10 @@ Aplicación de escritorio para verificar el estado de equipos de trabajo en Vita
 
 ## Instalación en VitaLinux/Ubuntu
 
-Descarga el paquete `.deb` desde la [página de Releases](https://github.com/deleyva/vx-equipment-check/releases/latest) e instálalo:
+Descarga el paquete `.deb` desde la [página de Releases](https://github.com/deleyva/vx-dga-pc-check-form/releases/latest) e instálalo:
 
 ```bash
-sudo dpkg -i vx-pc-check-form_<VERSION>_amd64.deb
+sudo dpkg -i vx-dga-pc-check-form_<VERSION>_amd64.deb
 sudo apt install -f  # Instalar dependencias si es necesario
 ```
 
@@ -91,14 +91,14 @@ npm run build
 Para un usuario concreto:
 
 ```bash
-VX_API_URL="http://192.168.1.105:3001/v1/report" vx-pc-check-form
+VX_API_URL="http://192.168.1.105:3001/v1/report" vx-dga-pc-check-form
 ```
 
 Para configurarlo de forma permanente para **todos los usuarios del sistema**:
 
 ```bash
 # Crear fichero de entorno global
-sudo tee /etc/environment.d/vx-pc-check-form.conf << 'EOF'
+sudo tee /etc/environment.d/vx-dga-pc-check-form.conf << 'EOF'
 VX_API_URL="http://192.168.1.105:3001/v1/report"
 EOF
 ```
@@ -115,7 +115,7 @@ echo 'VX_API_URL="http://192.168.1.105:3001/v1/report"' | sudo tee -a /etc/envir
 ### Modo Dry-Run (Testing)
 
 ```bash
-vx-pc-check-form --dry-run
+vx-dga-pc-check-form --dry-run
 ```
 
 ## Comandos del Sistema

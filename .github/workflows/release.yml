@@ -53,7 +53,7 @@ jobs:
       - name: Find and rename .deb file
         run: |
           ORIG_DEB=$(find src-tauri/target/release/bundle/deb -name "*.deb" | head -1)
-          NEW_NAME="vx-pc-check-form_${{ env.PACKAGE_VERSION }}_amd64.deb"
+          NEW_NAME="vx-dga-pc-check-form_${{ env.PACKAGE_VERSION }}_amd64.deb"
           NEW_PATH="src-tauri/target/release/bundle/deb/$NEW_NAME"
           mv "$ORIG_DEB" "$NEW_PATH"
           echo "DEB_PATH=$NEW_PATH" >> $GITHUB_ENV
