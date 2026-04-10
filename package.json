@@ -1,5 +1,5 @@
 {
-  "name": "vitalinux-equipment-check",
+  "name": "vx-pc-check-form",
   "version": "1.0.10",
   "description": "Aplicación de verificación de equipos VITALINUX con Tauri",
   "main": "index.js",

@@ -1,9 +1,9 @@
-name: 'Build and Release .deb'
+name: "Build and Release .deb"
 
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
   workflow_dispatch:
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
       - name: Rust cache
         uses: swatinem/rust-cache@v2
         with:
-          workspaces: './src-tauri -> target'
+          workspaces: "./src-tauri -> target"
 
       - name: Install Linux dependencies
         run: |
@@ -60,9 +60,9 @@ jobs:
       - name: Create Release and upload .deb
         uses: softprops/action-gh-release@v2
         with:
-          name: "VITALINUX Equipment Check v${{ env.PACKAGE_VERSION }}"
+          name: "Comprobación de PC Vitalinux v${{ env.PACKAGE_VERSION }}"
           body: |
-            🐧 VITALINUX Equipment Check v${{ env.PACKAGE_VERSION }}
+            🐧 Comprobación de PC Vitalinux v${{ env.PACKAGE_VERSION }}
 
             Aplicación de verificación de equipos de escritorio para VITALINUX y distribuciones Linux compatibles.
 

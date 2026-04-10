@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script para crear y publicar un release completo de VITALINUX Equipment Check
+# Script para crear y publicar un release completo de Comprobación de PC Vitalinux
 
 set -e
 
@@ -11,7 +11,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🚀 VITALINUX Equipment Check - Release Helper${NC}"
+echo -e "${BLUE}🚀 Comprobación de PC Vitalinux - Release Helper${NC}"
 echo ""
 
 # Verificar que estamos en el directorio correcto

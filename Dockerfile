@@ -1,4 +1,4 @@
-# Dockerfile para construir VITALINUX Equipment Check en Linux
+# Dockerfile para construir Comprobación de PC Vitalinux en Linux
 FROM ubuntu:20.04
 
 # Evitar prompts interactivos durante la instalación

@@ -8,7 +8,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "VITALINUX Equipment Check",
+    "productName": "Comprobación de PC Vitalinux",
     "version": "1.0.10"
   },
   "tauri": {
@@ -49,7 +49,7 @@
         "signingIdentity": null
       },
       "resources": [],
-      "shortDescription": "Verificación de equipos VITALINUX",
+      "shortDescription": "Abre el formulario de comprobación de PC Vitalinux",
       "targets": ["deb"],
       "windows": {
         "certificateThumbprint": null,

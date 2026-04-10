@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# Script para construir VITALINUX Equipment Check usando Docker
+# Script para construir Comprobación de PC Vitalinux usando Docker
 # Esto garantiza un entorno de build consistente
 
 set -e
 
-echo "🐳 Construyendo VITALINUX Equipment Check con Docker..."
+echo "🐳 Construyendo Comprobación de PC Vitalinux con Docker..."
 
 # Construir la imagen Docker
 echo "🐳 Construyendo imagen Docker para AMD64..."
-docker build --platform linux/amd64 -t vitalinux-equipment-check-builder .
+docker build --platform linux/amd64 -t vx-pc-check-form-builder .
 
 # Crear contenedor y extraer archivos
 echo "🏗️ Ejecutando build en contenedor..."
-docker run --platform linux/amd64 --name vx-build-temp vitalinux-equipment-check-builder
+docker run --platform linux/amd64 --name vx-build-temp vx-pc-check-form-builder
 
 # Crear directorio de salida
 mkdir -p ./docker-output

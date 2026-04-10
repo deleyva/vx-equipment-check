@@ -1,8 +1,8 @@
-# AGENTS.md - Contexto del Proyecto VITALINUX Equipment Check
+# AGENTS.md - Contexto del Proyecto Comprobación de PC Vitalinux
 
 ## 📋 Información del Proyecto
 
-**Nombre:** VITALINUX Equipment Check  
+**Nombre:** Comprobación de PC Vitalinux  
 **Tipo:** Aplicación de escritorio para verificación de equipos  
 **Tecnología:** Tauri (Rust + HTML/CSS/JavaScript)  
 **Usuario:** deleyva (VITALINUX Team)  

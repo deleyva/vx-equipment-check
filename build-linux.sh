@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Script para construir VITALINUX Equipment Check en Linux
+# Script para construir Comprobación de PC Vitalinux en Linux
 # Ejecutar este script en una máquina Ubuntu/VitaLinux
 
 set -e
 
-echo "🚀 Construyendo VITALINUX Equipment Check para Linux..."
+echo "🚀 Construyendo Comprobación de PC Vitalinux para Linux..."
 
 # Verificar que estamos en Linux
 if [[ "$OSTYPE" != "linux-gnu"* ]]; then
