@@ -7,7 +7,7 @@ release version:
     CURRENT=$(node -pe "require('./package.json').version")
     echo "📦 Bump: v${CURRENT} → v{{version}}"
     npm version {{version}} --no-git-tag-version
-    sed -i 's/"version": "'"${CURRENT}"'"/"version": "{{version}}"/' src-tauri/tauri.conf.json
+    sed -i '' 's/"version": "'"${CURRENT}"'"/"version": "{{version}}"/' src-tauri/tauri.conf.json
     git add package.json package-lock.json src-tauri/tauri.conf.json
     git commit -m "Bump version to v{{version}}"
     git tag "v{{version}}"
