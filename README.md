@@ -37,15 +37,29 @@ sudo apt install libwebkit2gtk-4.0-37 libgtk-3-0
 
 ## Releases automáticos (CI/CD)
 
-El proyecto usa GitHub Actions para generar releases automáticamente:
+El proyecto usa GitHub Actions para generar releases automáticamente.
 
-1. Actualizar versión en `package.json` y `src-tauri/tauri.conf.json`
-2. Crear y subir tag:
-   ```bash
-   git tag v1.0.11
-   git push origin v1.0.11
-   ```
-3. GitHub Actions construye el `.deb` y crea el release
+### Crear un nuevo release
+
+```bash
+# 1. Bump versión en package.json + package-lock.json
+npm version 1.0.17 --no-git-tag-version
+
+# 2. Bump versión en tauri.conf.json (npm no lo toca)
+sed -i 's/"version": "1.0.16"/"version": "1.0.17"/' src-tauri/tauri.conf.json
+
+# 3. Commit, tag y push
+git add package.json package-lock.json src-tauri/tauri.conf.json
+git commit -m "Bump version to v1.0.17"
+git tag v1.0.17
+git push && git push origin v1.0.17
+```
+
+GitHub Actions construye el `.deb` y crea el release con la versión correcta.
+
+> **Importante:** La versión en `package.json` y `tauri.conf.json` debe coincidir con el tag. Si no, el título del release no coincidirá con el tag.
+
+Alternativamente puedes usar `./release.sh` que automatiza todo el proceso (bump, build, tag, push).
 
 ## Desarrollo
 
@@ -121,9 +135,9 @@ vx-dga-pc-check-form --dry-run
 ## Comandos del Sistema
 
 ```bash
-# Obtener usuario
-migrasfree-cid
-
 # Obtener CID
+migasfree-cid
+
+# Obtener usuario gráfico
 vx-usuario-grafico
 ```

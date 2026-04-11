@@ -19,12 +19,12 @@ fn get_api_url() -> String {
 
 #[tauri::command]
 fn submit_form(app_handle: tauri::AppHandle, mut data: serde_json::Value) {
-    // 1. Obtener migrasfree-cid
-    let cid = match Command::new("migrasfree-cid").output() {
+    // 1. Obtener migasfree-cid
+    let cid = match Command::new("/usr/bin/migasfree-cid").output() {
         Ok(output) => {
             let stdout = String::from_utf8_lossy(&output.stdout).trim().to_string();
             let stderr = String::from_utf8_lossy(&output.stderr).trim().to_string();
-            println!("[DEBUG] migrasfree-cid exit={} stdout='{}' stderr='{}'", output.status, stdout, stderr);
+            println!("[DEBUG] /usr/bin/migasfree-cid exit={} stdout='{}' stderr='{}'", output.status, stdout, stderr);
             if !stdout.is_empty() {
                 stdout
             } else if !stderr.is_empty() {
@@ -34,7 +34,7 @@ fn submit_form(app_handle: tauri::AppHandle, mut data: serde_json::Value) {
             }
         }
         Err(e) => {
-            eprintln!("[ERROR] migrasfree-cid not found: {}", e);
+            eprintln!("[ERROR] /usr/bin/migasfree-cid not found: {}", e);
             String::new()
         }
     };
@@ -47,7 +47,7 @@ fn submit_form(app_handle: tauri::AppHandle, mut data: serde_json::Value) {
 
     // 3. Insertar en el JSON recibido
     if let Some(obj) = data.as_object_mut() {
-        obj.insert("migrasfree_cid".to_string(), serde_json::json!(cid));
+        obj.insert("migasfree_cid".to_string(), serde_json::json!(cid));
         obj.insert("usuario_grafico".to_string(), serde_json::json!(user_grafico));
     }
 
