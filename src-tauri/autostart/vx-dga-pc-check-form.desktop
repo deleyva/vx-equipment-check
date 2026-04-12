@@ -2,7 +2,7 @@
 Type=Application
 Name=Comprobación de PC Vitalinux
 Exec=vx-dga-pc-check-form
-Icon=vx-dga-pc-check-form
+Icon=/usr/share/pixmaps/vx-dga-pc-check-form.png
 Terminal=false
 X-GNOME-Autostart-enabled=true
 Comment=Verificación de equipos al inicio de sesión
