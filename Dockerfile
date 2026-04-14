@@ -42,6 +42,8 @@ COPY src-tauri/tauri.conf.json ./src-tauri/
 COPY src-tauri/build.rs ./src-tauri/
 COPY src-tauri/src/ ./src-tauri/src/
 COPY src-tauri/icons/ ./src-tauri/icons/
+COPY src-tauri/autostart/ ./src-tauri/autostart/
+COPY src-tauri/desktop-template.desktop ./src-tauri/desktop-template.desktop
 
 # Instalar dependencias de Node.js
 RUN npm ci
