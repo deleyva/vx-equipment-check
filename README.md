@@ -4,19 +4,19 @@ Aplicación de escritorio para verificar el estado de equipos de trabajo en Vita
 
 ## Características
 
-- Formulario intuitivo de verificación de componentes
-- Exportación automática de informes en formato JSON
-- Diseño responsive adaptado a cualquier pantalla
-- Rendimiento nativo gracias a Tauri
-- Autostart al inicio de sesión en VitaLinux
+-   Formulario intuitivo de verificación de componentes
+-   Exportación automática de informes en formato JSON
+-   Diseño responsive adaptado a cualquier pantalla
+-   Rendimiento nativo gracias a Tauri
+-   Autostart al inicio de sesión en VitaLinux
 
 ## Componentes Verificables
 
-- **Pantalla** (Obligatorio)
-- **Teclado** (Obligatorio)
-- **Ratón** (Opcional)
-- **Batería** (Opcional)
-- **Otros** (Opcional)
+-   **Pantalla** (Obligatorio)
+-   **Teclado** (Obligatorio)
+-   **Ratón** (Opcional)
+-   **Batería** (Opcional)
+-   **Otros** (Opcional)
 
 ## Instalación en VitaLinux/Ubuntu
 
@@ -41,18 +41,26 @@ El proyecto usa GitHub Actions para generar releases automáticamente.
 
 ### Crear un nuevo release
 
+Usa el comando `just release <version>` para automatizar el proceso:
+
+```bash
+just release 1.0.21
+```
+
+O sigue los pasos manualmente:
+
 ```bash
 # 1. Bump versión en package.json + package-lock.json
-npm version 1.0.17 --no-git-tag-version
+npm version 1.0.21 --no-git-tag-version
 
 # 2. Bump versión en tauri.conf.json (npm no lo toca)
-sed -i 's/"version": "1.0.16"/"version": "1.0.17"/' src-tauri/tauri.conf.json
+sed -i 's/"version": "1.0.16"/"version": "1.0.21"/' src-tauri/tauri.conf.json
 
 # 3. Commit, tag y push
 git add package.json package-lock.json src-tauri/tauri.conf.json
-git commit -m "Bump version to v1.0.17"
-git tag v1.0.17
-git push && git push origin v1.0.17
+git commit -m "Bump version to v1.0.21"
+git tag v1.0.21
+git push && git push origin v1.0.21
 ```
 
 GitHub Actions construye el `.deb` y crea el release con la versión correcta.
