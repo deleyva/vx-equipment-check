@@ -50,17 +50,35 @@ jobs:
       - name: Get version
         run: echo "PACKAGE_VERSION=$(node -pe "require('./package.json').version")" >> $GITHUB_ENV
 
-      - name: Find and rename .deb file
+      - name: Inject autostart files into .deb
         run: |
           ORIG_DEB=$(find src-tauri/target/release/bundle/deb -name "*.deb" | head -1)
+          echo "📦 Original .deb: $ORIG_DEB"
+
+          # Extract the .deb
+          WORKDIR=$(mktemp -d)
+          dpkg-deb -R "$ORIG_DEB" "$WORKDIR"
+
+          # Add autostart .desktop
+          mkdir -p "$WORKDIR/etc/xdg/autostart"
+          cp src-tauri/autostart/vx-dga-pc-check-form.desktop "$WORKDIR/etc/xdg/autostart/"
+
+          # Add icon to pixmaps
+          mkdir -p "$WORKDIR/usr/share/pixmaps"
+          cp src-tauri/autostart/vx-dga-pc-check-form.png "$WORKDIR/usr/share/pixmaps/"
+
+          # Verify files are in place
+          echo "✅ Injected files:"
+          ls -la "$WORKDIR/etc/xdg/autostart/"
+          ls -la "$WORKDIR/usr/share/pixmaps/"
+
+          # Repack the .deb
           NEW_NAME="vx-dga-pc-check-form_${{ env.PACKAGE_VERSION }}_amd64.deb"
           NEW_PATH="src-tauri/target/release/bundle/deb/$NEW_NAME"
-          if [ "$ORIG_DEB" != "$NEW_PATH" ]; then
-            mv "$ORIG_DEB" "$NEW_PATH"
-            echo "Renamed: $(basename $ORIG_DEB) -> $NEW_NAME"
-          else
-            echo "Already named correctly: $NEW_NAME"
-          fi
+          dpkg-deb -b "$WORKDIR" "$NEW_PATH"
+          rm -rf "$WORKDIR"
+
+          echo "📦 Repacked .deb: $NEW_PATH"
           echo "DEB_PATH=$NEW_PATH" >> $GITHUB_ENV
           echo "DEB_NAME=$NEW_NAME" >> $GITHUB_ENV
 
