@@ -110,6 +110,10 @@ npm run build
 
 ### Variable de Entorno VX_API_URL
 
+La variable veine VX_API_URL viene configurada por defecto al instalar la aplicación con el valor \`<http://servidor.vx:3001/v1/report>.
+
+Se puede sobrescribir con una variable de entorno `VX_API_URL` en el sistema.
+
 Para un usuario concreto:
 
 ```bash

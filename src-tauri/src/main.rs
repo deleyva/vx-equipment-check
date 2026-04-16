@@ -14,7 +14,7 @@ fn is_dry_run() -> bool {
 /// Get API URL from environment variable or use default
 fn get_api_url() -> String {
     env::var("VX_API_URL")
-        .unwrap_or_else(|_| "http://172.16.0.249:3001/v1/report".to_string())
+        .unwrap_or_else(|_| "http://servidor.vx:3001/v1/report".to_string())
 }
 
 #[tauri::command]
